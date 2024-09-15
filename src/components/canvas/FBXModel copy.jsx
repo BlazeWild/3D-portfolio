@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
-function FBXModel({ shouldAnimate=false, modelPath, scale = 1, position = [0, 0, 0], rotation = [0, Math.PI / 3.5, 0], transitionDuration = 0.7 }) {
+function FBXModel({ shouldAnimate=false, modelPath, scale = 1, position = [0, 0, 0], rotation = [0, Math.PI / 3.5, 0], transitionDuration = 1 }) {
   const modelRef = useRef();
   const mixerRef = useRef();
   const clock = new THREE.Clock();
@@ -27,7 +27,7 @@ function FBXModel({ shouldAnimate=false, modelPath, scale = 1, position = [0, 0,
 
       const animationPaths = {
         waving: './character/ashokanims/Waving.fbx',
-        idle: './character/ashokanims/Idle.fbx',
+        idle: './character/ashokanims/standidle.fbx',
       };
 
       const loadAnimation = (path, animationName, loop = false) => {

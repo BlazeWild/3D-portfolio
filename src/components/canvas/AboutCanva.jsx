@@ -26,14 +26,6 @@ const Desk = () => {
   );
 };
 
-const Plane=()=>{
-  return(
-    <mesh receiveShadow rotation={[0, 0, 0]} position={[0, 0, 0]}>
-      <circleGeometry args={[100, 10]} />
-      <shadowMaterial opacity={1} />
-    </mesh>
-  )
-}
 
 const WorkSpaceCanva = () => {
 

@@ -36,7 +36,7 @@ const Hero = () => {
           <a href="#about">
           <div className="w-[35px h-[64px] rounded-3xl border-4 border-primary flex
           justify-center items-start p-2">
-            <motion.dev
+            <motion.div
             animate={{y: [0, 24, 0]}}
             transition={{repeat: Infinity,repeatType:'loop', duration: 2}}
             className='w-3 h-3 rounded-full bg-primary mb-1'

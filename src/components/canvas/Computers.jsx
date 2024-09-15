@@ -1,39 +1,38 @@
-import React, {  useRef,Suspense, useEffect, useState } from 'react';
+// src/components/ComputersCanvas.jsx
+
+import React, { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
+import { OrbitControls, Preload, Html, useGLTF } from '@react-three/drei';
+import CanvasLoader from '../CanvasLoader';
 import FBXModel from './FBXModel';
+import FBXAnimations from './FBXAnimations';
 
 const Platform = () => {
   const platform = useGLTF('./models/platform/scene.gltf');
   return (
-    <mesh>
-      <hemisphereLight intensity={1} groundColor="blue" />
-      <directionalLight
-        position={[10, 10, 10]} // Adjust position as needed
-        intensity={0.1} // Adjust intensity as needed
-        castShadow // Enable shadow casting
-      >
-      </directionalLight>
-      <ambientLight intensity={0.8} shadow />
-      <primitive 
-        object={platform.scene}
-        scale={[1.6, 0.5, 1.6]}
-
-        position={[0, -5.5,0]}
-        rotation={[0, -Math.PI /2.2, 0]}
-      />
-    </mesh>
+    <primitive 
+      object={platform.scene}
+      scale={[1.6, 0.5, 1.6]}
+      position={[0, -5.5, 0]}
+      rotation={[0, -Math.PI / 2.2, 0]}
+    />
   );
 };
 
 const ComputersCanvas = () => {
+  const modelRef = useRef();
+
+  const animationPaths = {
+    waving: './character/ashokanims/Waving.fbx',
+    idle: './character/ashokanims/standidle.fbx',
+  };
 
   return (
     <Canvas
       frameloop="always"
       shadows
-      camera={{ position: [7, 5, 5], fov: 70 , rotation: [0, 0, 0]}}
-      gl={{ preserveDrawingBuffer: true, alpha: true }}
+      camera={{ position: [7, 5, 5], fov: 70 }}
+      gl={{ preserveDrawingBuffer: true, alpha: true, antialias: true }}
       style={{
         position: 'absolute',
         top: 0,
@@ -41,29 +40,45 @@ const ComputersCanvas = () => {
         width: '100%',
         height: '100%',
         zIndex: 0,
+        backgroundColor: 'transparent',
       }}
     >
-      <Suspense fallback={null
-      }>
+      <Suspense fallback={<CanvasLoader />}>
+        <ambientLight intensity={1} />
+        <hemisphereLight intensity={1} groundColor="blue" />
+        <hemisphereLight intensity={1} groundColor="blue" />
+        <directionalLight 
+          position={[10, 0, 10]} 
+          intensity={0.1} 
+          castShadow 
+        />
+
         <OrbitControls 
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enableDamping={true}
+          dampingFactor={0.1}
         />
+
+        {/* Models */}
         <Platform />
-        <ambientLight intensity={1} shadow />
         <FBXModel
           modelPath="./character/ashok.fbx"
           scale={0.045}
           position={[0, -5, 0]}
+          rotation={[0, Math.PI / 3, 0]}
+          ref={modelRef}
         />
 
-        {/* <spotLight 
-        position={[1, 0, 1]} 
-        rotation={[0.57,0.57,-0.57]}
-        intensity={0.8} /> */}
+        <FBXAnimations
+          modelRef={modelRef}
+          animationPaths={animationPaths}
+          transitionDuration={1}
+        />
+
+        <Preload all />
       </Suspense>
-      <Preload all />
     </Canvas>
   );
 };
