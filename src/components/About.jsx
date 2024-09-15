@@ -7,7 +7,6 @@ import {services} from '../constants'
 import {fadeIn, textVariant} from '../utils/motion';
 
 import { SectionWrapper } from '../hoc'
-import  { WorkSpaceCanva} from './canvas'
 
 const ServiceCard = ({index,title, icon}) => {
   return (
@@ -80,7 +79,7 @@ const About = () => {
     </div>
 
     
-    <WorkSpaceCanva />
+    {/* <WorkSpaceCanva /> */}
 
     </section>
 
