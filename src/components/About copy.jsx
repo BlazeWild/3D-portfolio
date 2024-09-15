@@ -48,13 +48,12 @@ const About = () => {
     <>
     <section className="relative w-full h-screen mx-auto"> 
     <motion.div variants={textVariant()}>
-
       <p className={styles.sectionSubText}>
         Introduction
       </p>
       <h2 className={styles.sectionHeadText}>Overview</h2>
     </motion.div>
-    
+
     <motion.p 
     variants={fadeIn("","",0.1,1)}  
     className="mt-4 text-secondary text-[17px]
@@ -71,7 +70,29 @@ const About = () => {
     </motion.p>
 
 
-  <div className="mt-20 flex flex-wrap gap-10">
+    {/*cards*/}
+    <div className="mt-20 flex flex-wrap gap-10">
+      {services.map((service, index) => (
+        <ServiceCard key={service.title}
+        index={index} {...service}/>
+      ))}
+    </div>
+    
+    {/* <div className="mt-20 flex flex-wrap gap-10">
+  <img
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=BlazeWild&show_icons=true&theme=transparent"
+    alt="GitHub Stats"
+    loading="lazy"
+    className="w-[400px] h-auto rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl"
+  />
+
+  <img
+    src="https://github-readme-stats.vercel.app/api?username=BlazeWild&show_icons=true&theme=transparent"
+    alt="GitHub Stats"
+    loading="lazy"
+    className="w-[600px] h-auto rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl"
+  />
+
 <img
     src="https://skillicons.dev/icons?i=python,tensorflow,pytorch,javascript,react,unity,c"
     alt="Tech Icons"
@@ -79,10 +100,8 @@ const About = () => {
     className="w-[600px] h-auto rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl"
   />
 
-</div>
-
-
-
+<a href="https://git.io/streak-stats"><img src="https://github-readme-streak-stats.herokuapp.com?user=BlazeWild&theme=dark&type=png&background=EB545400&ring=90CCE2&currStreakLabel=90CCE2" alt="GitHub Streak" /></a>
+</div> */}
 
     
     {/* <WorkSpaceCanva /> */}
