@@ -9,9 +9,12 @@ const styles = {
       "text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
   
     sectionHeadText:
-      "text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]",
+      "text-white font-black md:text-[45px] sm:text-[40px] xs:text-[35px] text-[20px]",
     sectionSubText:
       "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
+
+    // New styles for card zoom effect
+    card: "transition-transform transform hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden",
   };
   
   export { styles };

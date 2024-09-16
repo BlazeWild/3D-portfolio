@@ -59,6 +59,7 @@ const ComputersCanvas = () => {
           minPolarAngle={Math.PI / 2}
           enableDamping={true}
           dampingFactor={0.1}
+          enablePan={false}
         />
 
         {/* Models */}
