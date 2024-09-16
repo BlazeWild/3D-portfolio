@@ -21,16 +21,16 @@ const About = () => {
       // Determine the direction to animate from
       switch (direction) {
         case 'left':
-          fromVars.x = -100;
+          fromVars.x = -50;
           break;
         case 'right':
-          fromVars.x = 100;
+          fromVars.x = 50;
           break;
         case 'top':
           fromVars.y = -100;
           break;
         case 'bottom':
-          fromVars.y = 100;
+          fromVars.y = 50;
           break;
         default:
           fromVars.y = 50; // Default is fade from the bottom
@@ -40,7 +40,7 @@ const About = () => {
         opacity: 1,
         x: 0,
         y: 0,
-        duration: 1,
+        duration: 0.7,
         scrollTrigger: {
           trigger: el,
           start: 'top 80%', 
@@ -53,7 +53,7 @@ const About = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto" ref={aboutRef}>
+    <section className="relative w-full min-h-screen mx-auto" ref={aboutRef}>
       <div className="text-center fade-in" data-direction="top">
         <p className={styles.sectionHeadText}>About Me</p>
       </div>
@@ -86,7 +86,7 @@ const About = () => {
               <br />
               <a
                 href="/path-to-your-resume"
-                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-900 transition-all duration-300"
               >
                 <span className="mr-2">Resume</span>
                 <svg
@@ -116,19 +116,19 @@ const About = () => {
             src="https://github-readme-stats.vercel.app/api/top-langs/?username=BlazeWild&show_icons=true&theme=transparent&border_color=90CCE2&text_color=ffffff&title_color=90CCE2"
             alt="GitHub Top Languages"
             loading="lazy"
-            className="w-full h-auto rounded-lg shadow-md"
+            className={`w-full h-auto rounded-lg shadow-md ${styles.card}`}
           />
         </div>
-        <div className="w-[500px] rounded-lg items-center justify-center fade-in"   data-direction="right" >
+        <div className={`w-[500px] rounded-lg items-center justify-center fade-in`}data-direction="right" >
           <img
             src="https://github-readme-stats.vercel.app/api?username=BlazeWild&show_icons=true&theme=transparent&border_color=90CCE2&text_color=ffffff&title_color=90CCE2"
             alt="GitHub Stats"
-            className="w-full h-auto rounded-lg shadow-md data"
+            className={`w-full h-auto rounded-lg shadow-md data ${styles.card}`}
           />
           <img
             src="https://github-readme-streak-stats.herokuapp.com?user=BlazeWild&theme=dark&background=EB545400&ring=90CCE2&border=90CCE2&sideNums=90CCE2&currStreakLabel=90CCE2"
             alt="GitHub Streak"
-            className="w-full h-auto rounded-lg shadow-md mt-10"
+            className={`w-full h-auto rounded-lg shadow-md mt-10 ${styles.card}`}
           />
         </div>
       </div>
@@ -138,7 +138,7 @@ const About = () => {
           src="https://skillicons.dev/icons?i=python,tensorflow,pytorch,javascript,react,threejs,html,tailwind,c,cpp,cs,unity,blender,ps&perline=7"
           alt="Tech Icons"
           loading="lazy"
-          className="w-[800px] h-[200px] rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl"
+          className={`w-[800px] h-[200px] rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl ${styles.card}`}
         />
       </div>
     </section>
