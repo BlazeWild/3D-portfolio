@@ -29,3 +29,12 @@
   position: relative;
   z-index: 2;
 }
+
+.canva-shadow {
+  transition: box-shadow 0.3s ease; /* Add transition for smooth shadow effect */
+}
+
+.canva-shadow:hover {
+  box-shadow: 0 4px 20px rgba(144, 204, 226, 0.5); /* White box-shadow on hover */
+}
+
