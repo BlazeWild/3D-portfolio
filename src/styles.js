@@ -7,7 +7,10 @@ const styles = {
       "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
     heroSubText:
       "text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
-  
+
+    worksLogoText:
+      "text-[#90cce2] font-medium lg:text-[30px] sm:text-[24px] xs:text-[22px] text-[16px] lg:leading-[36px]",
+    
     sectionHeadText:
       "text-white font-black md:text-[45px] sm:text-[40px] xs:text-[35px] text-[20px]",
     sectionSubText:

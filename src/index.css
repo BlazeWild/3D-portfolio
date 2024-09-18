@@ -136,6 +136,16 @@
   transform: translateZ(0);
 }
 
+.arrow-gradient {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+}
+
 @keyframes mulShdSpin {
   0%,
   100% {
@@ -348,5 +358,14 @@
   /*  footer */
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
+  }
+}
+
+/* Example of media query affecting the button */
+@media (min-width: 1024px) {
+  .next-button {
+    /* Ensure these styles are not causing issues */
+    display: block;
+    /* Other styles */
   }
 }

@@ -40,27 +40,28 @@
 }
 
 .card:hover img {
-  transform: scale(1.2);
+  transform: scale(1);
 }
 
-.overlay{
-    height: 0;
-    width:100%;
-    background:linear-gradient(transparent,#1c1c1c 58%);
-    border-radius: 10px;
+.overlay {
     position: absolute;
-    left:0%;
-    bottom: 0%;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent, #1c1c1c 58%);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column ;
+    flex-direction: column;
     padding: 0 40px;
-    text-align:center;
+    text-align: center;
     font-size: 14px;
-    transition:height 0.5s;
-}
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s;
+    z-index: 10; /* Ensure overlay is above other elements */
+  }
 
 .overlay h3{
     font-weight: 500;
@@ -87,12 +88,13 @@
 }
 .card:hover .overlay {
   height: 100%;
+  opacity: 1;
 }
 
 
 
 .boxLhover img{
-    transform: scale(1.2);
+    transform: scale(1);
 }
 .box:hover .overlay{
     height: 100%;
