@@ -14,6 +14,7 @@
   height: 100%;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
   transition: opacity 0.5s ease;
+  transition: filter 0.5s ease;
   opacity: 0;
   z-index: 1;
 }
@@ -23,8 +24,13 @@
 }
 
 .overlay-container:hover {
-  box-shadow: 0 4px 20px rgba(144, 204, 226, 0.5); /* White box-shadow on hover */
+  box-shadow: 0 4px 20px rgba(144, 204, 226, 0.2); /* White box-shadow on hover */
+  
 }
+.overlay-container:hover .bg-blur {
+  filter: blur(3px);
+}
+
 .card-content {
   position: relative;
   z-index: 2;
@@ -35,6 +41,6 @@
 }
 
 .canva-shadow:hover {
-  box-shadow: 0 4px 20px rgba(144, 204, 226, 0.5); /* White box-shadow on hover */
+  box-shadow: 0 4px 20px rgba(144, 204, 226, 0.2); /* White box-shadow on hover */
 }
 

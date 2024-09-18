@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect,useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+// import { useGSAP } from '@gsap/react';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
 import '../WorksCards.css'; // Ensure this includes the hover effect CSS
@@ -9,8 +9,8 @@ import { aiProjects, gamesProjects } from '../hoc/index.js';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 import CanvasLoader from './CanvasLoader.jsx';
-import { Blaze } from './canvas/Blaze.jsx';
 import { TV } from './canvas/Tv.jsx';
+import { SmartTV } from './canvas/SmartTv.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,9 +34,9 @@ const Works = () => {
     });
   };
   
-  useGSAP(() => {
-    gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
-  }, [selectedProjectIndex]);
+  // useGSAP(() => {
+  //   gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
+  // }, [selectedProjectIndex]);
 
   const projectsToShow = isOn ? gamesProjects : aiProjects;
   const currentProject = projectsToShow[selectedProjectIndex];
@@ -146,7 +146,7 @@ const Works = () => {
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
 
      <div className="overlay-container relative flex flex-col gap-3 sm:p-8 py-8 px-4 shadow-2xl shadow-blue-20 group fade-in" flex-direction="left">
-  <div className="absolute top-0 right-0 absolute inset-0 bg-cover bg-center"
+  <div className=" bg-blur absolute top-0 right-0 absolute inset-0 bg-cover bg-center"
       style={{
         backgroundImage: `url(${currentProject.bg_image})`,
         backgroundSize: 'cover',
@@ -201,19 +201,16 @@ const Works = () => {
 
 </div>
 
-
-
         <div className=" canva-shadow shadow-2xl shadow-blue-20 rounded-lg h-96 md:h-full fade-in" flex-direction="right">
           <Canvas
-            gl={{ preserveDrawingBuffer: true, alpha: false, antialias: true }}
-            style={{ background: '#151423' }} 
+            style={{ background: '0b0b15' }} 
           >
-            <ambientLight intensity={Math.PI} />
+            <ambientLight intensity={0.1} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
               <Suspense fallback={<CanvasLoader />}>
-                <group scale={6} position={[0, 0, 0]} rotation={[0, 1.57, 0]}>
-                  <TV />
+                <group scale={6} position={[0, -2, 0]} rotation={[0, 0, 0]}>
+                  <SmartTV/>
                 </group>
               </Suspense>
             </Center>
