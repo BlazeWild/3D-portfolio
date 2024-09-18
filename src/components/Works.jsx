@@ -93,7 +93,7 @@ const Works = () => {
     {/*Project div*/}
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
 
-     <div className="justify-bottom relative flex flex-col gap-3 sm:p-8 py-8 px-4 shadow-2xl shadow-blue-20 group">
+     <div className="overlay-container relative flex flex-col gap-3 sm:p-8 py-8 px-4 shadow-2xl shadow-blue-20 group">
   <div className="absolute top-0 right-0 absolute inset-0 bg-cover bg-center"
       style={{
         backgroundImage: `url(${currentProject.bg_image})`,
