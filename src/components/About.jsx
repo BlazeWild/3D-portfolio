@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
-
+import '../WorksCards.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -40,7 +40,7 @@ const About = () => {
         opacity: 1,
         x: 0,
         y: 0,
-        duration: 0.7,
+        duration: 0.6,
         scrollTrigger: {
           trigger: el,
           start: 'top 80%', 
@@ -65,7 +65,7 @@ const About = () => {
               <img
                 src="src/assets/asokbk2.jpg"  
                 alt="Ashok"
-                className="w-full h-full object-cover"
+                className="canva-shadow w-full h-full object-cover"
               />
             </div>
 

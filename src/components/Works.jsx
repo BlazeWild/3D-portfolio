@@ -74,10 +74,10 @@ const Works = () => {
           opacity: 1,
           x: 0,
           y: 0,
-          duration: 0.7,
+          duration: 0.6,
           scrollTrigger: {
             trigger: el,
-            start: 'top 80%',
+            start: 'top 90%',
             toggleActions: 'play none none reverse',
             end: 'top 20%',
           },
@@ -89,7 +89,7 @@ const Works = () => {
 
   return (
 <section  ref={worksRef}
-  className="relative items-center w-full min-h-screen mx-auto"
+  className="relative items-center w-full h-auto mx-auto"
   // style={{
   //   backgroundImage: `url(${isOn ? 'gradients/gamesgrad1.png' : 'gradients/aigrad1.png'})`,
   //   backgroundSize: 'cover',
@@ -200,15 +200,17 @@ const Works = () => {
 
 </div>
 
-        <div className=" canva-shadow shadow-2xl shadow-blue-20 rounded-lg h-96 md:h-full fade-in" flex-direction="right">
+        <div className=" canva-shadow shadow-2xl shadow-blue-20 
+        rounded-lg
+        h-96 md:h-full fade-in" flex-direction="right">
           <Canvas
-            style={{ background: '0b0b15' }} 
+            style={{ background: '#0d0c18' }} 
           >
             <ambientLight intensity={0.1} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
               <Suspense fallback={<CanvasLoader />}>
-                <group scale={6} position={[0, -2, 0]} rotation={[0, 0, 0]}>
+                <group scale={5} position={[0, -2.5, 0]} rotation={[0, 0.2, 0]}>
                   <SmartTV texture={currentProject.texture}/>
                 </group>
               </Suspense>
@@ -221,4 +223,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "work");

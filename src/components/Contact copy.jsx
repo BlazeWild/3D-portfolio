@@ -1,4 +1,4 @@
-import React, { useRef, useState , useEffect} from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -8,20 +8,6 @@ import { slideIn } from "../utils/motion";
 import { Blaze } from "./canvas/Blaze";
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
-import { socialMediaLinks } from "../constants/SocialMediaLinks";
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'; 
-
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-const iconComponents = {
-  FaGithub: FaGithub,
-  FaLinkedin: FaLinkedin,
-  FaTwitter: FaTwitter,
-};
-
-
 
 const Contact = () => {
   const formRef = useRef();
@@ -53,9 +39,9 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "Ashok Bk",
+          to_name: "JavaScript Mastery",
           from_email: form.email,
-          to_email: "ashokbk215@gmail.com",
+          to_email: "sujata@jsmastery.pro",
           message: form.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
@@ -80,63 +66,14 @@ const Contact = () => {
       );
   };
 
-
-  // GSAP Animations
-  useEffect(() => {
-    const elements = formRef.current.querySelectorAll('.fade-in');
-
-    elements.forEach((el, index) => {
-      const direction = el.getAttribute('data-direction');
-      
-      let fromVars = { opacity: 0 };
-
-      switch (direction) {
-        case 'top':
-          fromVars.y = -50;
-          break;
-        case 'bottom':
-          fromVars.y = 50;
-          break;
-        case 'left':
-          fromVars.x = -50;
-          break;
-        case 'right':
-          fromVars.x = 50;
-          break;
-        default:
-          fromVars.y = 50;
-      }
-
-      gsap.fromTo(
-        el,
-        fromVars,
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-            end: 'top 20%',
-          },
-          delay: 0.2 * index,
-        }
-      );
-    });
-  }, []);
-
   return (
-    <section ref={formRef}
-      className="flex flex-col justify-center items-center gap-10 w-full"
-      // style={{ height: '100vh' }}
+    <div
+      className="flex flex-col xl:flex-row gap-10 overflow-hidden w-full"
+      style={{ height: '100vh' }}
     >
-      <div
-        // variants={slideIn("left", "tween", 0.2, 1)}
-        className="canva-shadow shadow-2xl shadow-blue-20 
-         w-full max-w-[900px] bg-quaternary p-8 rounded-2xl flex flex-col fade-in"
-         data-direction='left'
+      <motion.div
+        variants={slideIn("left", "tween", 0.2, 1)}
+        className="flex-1 bg-black-100 p-8 rounded-2xl flex flex-col"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
@@ -154,7 +91,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className='bg-placeholder py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
           <label className='flex flex-col'>
@@ -165,7 +102,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
-              className='bg-placeholder py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
           <label className='flex flex-col'>
@@ -176,7 +113,7 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder='What you want to say?'
-              className='bg-placeholder py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
 
@@ -187,28 +124,38 @@ const Contact = () => {
             {loading ? "Sending..." : "Send"}
           </button>
         </form>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col items-center fade-in" data-direction="top">
-        <h4 className="text-secondary font-bold text-2xl mb-4">Follow Me</h4>
-        <div className="flex gap-4">
-          {socialMediaLinks.map((link) => {
-            const IconComponent = iconComponents[link.icon];
-            return (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="icon-container bg-transparent"
-              >
-                <IconComponent className="text-4xl bg-transparent" />
-              </a>
-            );
-          })}
+      {/* <motion.div
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className="flex-1 relative"
+      >
+        <div style={{ height: '100%', width: '100%' }}>
+          <Canvas
+            shadows
+            frameloop="always"
+            camera={{
+              fov: 60,
+              near: 0.2,
+              far: 200,
+              position: [-2, 1, 4],
+            }}
+            style={{ height: '100%', width: '100%' }}
+          >
+            <ambientLight intensity={1} />
+            <pointLight position={[10, 10, 10]} intensity={1} />
+            <OrbitControls
+              autoRotate
+              enableZoom={false}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 2}
+            />
+            <Blaze scale={[2.5, 2.5, 2.5]} />
+            <Preload all />
+          </Canvas>
         </div>
-      </div>
-    </section>
+      </motion.div> */}
+    </div>
   );
 };
 

@@ -27,9 +27,9 @@
   box-shadow: 0 4px 20px rgba(144, 204, 226, 0.2); /* White box-shadow on hover */
   
 }
-.overlay-container:hover .bg-blur {
+/* .overlay-container:hover .bg-blur {
   filter: blur(3px);
-}
+} */
 
 .card-content {
   position: relative;
@@ -44,3 +44,11 @@
   box-shadow: 0 4px 20px rgba(144, 204, 226, 0.2); /* White box-shadow on hover */
 }
 
+.icon-container {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.icon-container:hover {
+  transform: scale(1.3); /* Adjust the scale value as needed */
+}
