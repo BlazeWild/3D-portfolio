@@ -189,7 +189,7 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className="flex flex-col items-center fade-in" data-direction="top">
+      <div className="mb-10 flex flex-col items-center fade-in" data-direction="top">
         <h4 className="text-secondary font-bold text-2xl mb-4">Follow Me</h4>
         <div className="flex gap-4">
           {socialMediaLinks.map((link) => {

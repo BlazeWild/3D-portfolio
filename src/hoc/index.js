@@ -2,7 +2,7 @@ import SectionWrapper from "./SectionWrapper";
 
 export const aiProjects = [
     {
-      bg_image: '/bgs/bg1.jpg',
+      bg_image: '/assets/aibg1.jpg',
       title: 'Podcastr - AI Podcast Platform',
       desc: 'Podcastr is a revolutionary Software-as-a-Service platform that transforms the way podcasts are created. With advanced AI-powered features like text-to-multiple-voices functionality, it allows creators to generate diverse voiceovers from a single text input.',
       subdesc:

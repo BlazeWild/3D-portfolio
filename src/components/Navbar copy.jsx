@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import { Link as ScrollLink } from 'react-scroll';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for URL updates
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
@@ -9,19 +10,26 @@ import { logo, menu, close } from '../assets';
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleNavClick = (id, title) => {
+    setActive(title);
+    navigate(`/${id}`); // Update the URL
+    window.scrollTo(0, 0); // Scroll to top
+    if (toggle) {
+      setToggle(false); // Close mobile menu if open
+    }
+  };
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <ScrollLink
-          to="/" 
+          to="home" // Update to the correct ID if needed
           smooth={true}
-          duration={300} 
+          duration={300}
           className='flex items-center gap-2'
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
+          onClick={() => handleNavClick("", "")} // Pass empty values for home
         >
           <img src={logo} alt="logo" className='w-9 h-9 object-contain'/>
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
@@ -34,13 +42,13 @@ const Navbar = () => {
             <li
               key={link.id}
               className={`${active === link.title ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
+              onClick={() => handleNavClick(link.id, link.title)}
             >
               <ScrollLink
                 to={link.id}
                 smooth={true}
-                duration={300} // Reduced duration for faster scrolling
-                onClick={() => setActive(link.title)} 
+                duration={300}
+                onClick={() => handleNavClick(link.id, link.title)} // Handle navigation
               >
                 {link.title}
               </ScrollLink>
@@ -62,15 +70,13 @@ const Navbar = () => {
                 <li
                   key={link.id}
                   className={`${active === link.title ? "text-white" : "text-secondary"} font-poppins font-md cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
+                  onClick={() => handleNavClick(link.id, link.title)}
                 >
                   <ScrollLink
                     to={link.id}
                     smooth={true}
-                    duration={300} // Reduced duration for faster scrolling
+                    duration={300}
+                    onClick={() => handleNavClick(link.id, link.title)} // Handle navigation
                   >
                     {link.title}
                   </ScrollLink>
