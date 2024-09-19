@@ -11,6 +11,11 @@ export const socialMediaLinks = [
       icon: 'FaLinkedin',
     },
     {
+        id: 'discord',
+        url: 'https://discord.gg/blazewild',
+        icon: 'FaDiscord',
+    },
+    {
       id: 'twitter',
       url: 'https://twitter.com/ashok_eam',
       icon: 'FaTwitter',

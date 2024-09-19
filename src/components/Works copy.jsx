@@ -1,16 +1,20 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect,useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { useGSAP } from '@gsap/react';
 import { SectionWrapper } from '../hoc';
 import { styles } from '../styles';
 import '../WorksCards.css'; // Ensure this includes the hover effect CSS
-import { myProjects } from '../hoc/index.js';
+import { aiProjects, gamesProjects } from '../hoc/index.js';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 import CanvasLoader from './CanvasLoader.jsx';
-import { Blaze } from './canvas/Blaze.jsx';
+import { SmartTV } from './canvas/SmartTv.jsx';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Works = () => {
+  const worksRef = useRef(null);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [isOn, setIsOn] = useState(false); // State for the toggle switch
 
@@ -20,23 +24,72 @@ const Works = () => {
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
+      const totalProjects = projectsToShow.length;
       if (direction === 'previous') {
-        return prevIndex === 0 ? myProjects.length - 1 : prevIndex - 1;
+        return prevIndex === 0 ? totalProjects - 1 : prevIndex - 1;
       } else {
-        return prevIndex === myProjects.length - 1 ? 0 : prevIndex + 1;
+        return prevIndex === totalProjects - 1 ? 0 : prevIndex + 1;
       }
     });
   };
+  
+  // useGSAP(() => {
+  //   gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
+  // }, [selectedProjectIndex]);
 
-  useGSAP(() => {
-    gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.inOut' });
-  }, [selectedProjectIndex]);
+  const projectsToShow = isOn ? gamesProjects : aiProjects;
+  const currentProject = projectsToShow[selectedProjectIndex];
+  
 
-  const currentProject = myProjects[selectedProjectIndex];
+  // GSAP Animations
+  useEffect(() => {
+    const elements = worksRef.current.querySelectorAll('.fade-in');
+
+    elements.forEach((el, index) => {
+      const direction = el.getAttribute('data-direction');
+
+      let fromVars = { opacity: 0 };
+
+      switch (direction) {
+        case 'left':
+          fromVars.x = -50;
+          break;
+        case 'right':
+          fromVars.x = 50;
+          break;
+        case 'top':
+          fromVars.y = -50;
+          break;
+        case 'bottom':
+          fromVars.y = 50;
+          break;
+        default:
+          fromVars.y = 50;
+      }
+
+      gsap.fromTo(
+        el,
+        fromVars,
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+            end: 'top 20%',
+          },
+          delay: 0.2 * index,
+        }
+      );
+    });
+  }, []);
 
   return (
-<section 
-  className="relative items-center w-full min-h-screen mx-auto"
+<section  ref={worksRef}
+  className="relative items-center w-full h-auto mx-auto"
   // style={{
   //   backgroundImage: `url(${isOn ? 'gradients/gamesgrad1.png' : 'gradients/aigrad1.png'})`,
   //   backgroundSize: 'cover',
@@ -44,13 +97,13 @@ const Works = () => {
   //   backgroundRepeat: 'no-repeat',
   // }}
 >
-<p className={`text-center ${styles.sectionHeadText}`}>My works</p>
+<p className={`text-center ${styles.sectionHeadText} fade-in`} data-direction="top">My works</p>
 
 
 <div className="flex justify-center items-center my-6 space-x-4">
   {/* Label for AI on the left */}
   <span
-    className={`text-lg font-semibold ${styles.worksLogoText}`}
+    className={`text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="left"
     style={{ color: '#90cce2' }}
   >
     AI
@@ -58,7 +111,8 @@ const Works = () => {
 
   <div
     onClick={toggleSwitch}
-    className={`relative w-24 h-10 flex items-center rounded-full p-1 cursor-pointer`}
+    className={`relative w-24 h-10 flex items-center rounded-full p-1 cursor-pointer fade-in`}
+    flex-direction="bottom"
     style={{
       backgroundImage: isOn ? `url('bgs/games6.jpg')` : `url('bgs/aibg6.jpg')`,
       backgroundSize: 'cover',
@@ -77,7 +131,7 @@ const Works = () => {
 
   {/* Label for Games on the right */}
   <span
-    className={`text-lg font-semibold ${styles.worksLogoText}`}
+    className={`text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="right"
     style={{ color: '#90cce2' }}
   >
     Games
@@ -90,8 +144,8 @@ const Works = () => {
     {/*Project div*/}
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
 
-     <div className="justify-bottom relative flex flex-col gap-3 sm:p-8 py-8 px-4 shadow-2xl shadow-blue-20 group">
-  <div className="absolute top-0 right-0 absolute inset-0 bg-cover bg-center"
+     <div className="overlay-container relative flex flex-col gap-3 sm:p-8 py-8 px-4 shadow-2xl shadow-blue-20 group fade-in" flex-direction="left">
+  <div className=" bg-blur absolute top-0 right-0 absolute inset-0 bg-cover bg-center"
       style={{
         backgroundImage: `url(${currentProject.bg_image})`,
         backgroundSize: 'cover',
@@ -124,13 +178,7 @@ const Works = () => {
   </div>
 </div>
 
-
-
-
-
-
-
-  <div className="flex justify-between items-center mt-auto mb-1 relative z-10">
+  <div className="flex justify-between items-center mt-auto mb-1 relative z-10 ">
     <button className="arrow-btn w-8 h-8" onClick={() => handleNavigation('previous')}>
       <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
     </button>
@@ -152,16 +200,18 @@ const Works = () => {
 
 </div>
 
-
-
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
-          <Canvas>
-            <ambientLight intensity={Math.PI} />
+        <div className=" canva-shadow shadow-2xl shadow-blue-20 
+        rounded-lg
+        h-96 md:h-full fade-in" flex-direction="right">
+          <Canvas
+            style={{ background: '#0d0c18' }} 
+          >
+            <ambientLight intensity={0.1} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
               <Suspense fallback={<CanvasLoader />}>
-                <group scale={5} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                  <Blaze />
+                <group scale={5} position={[0, -2.5, 0]} rotation={[0, 0.2, 0]}>
+                  <SmartTV texture={currentProject.texture}/>
                 </group>
               </Suspense>
             </Center>
@@ -173,4 +223,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "work");

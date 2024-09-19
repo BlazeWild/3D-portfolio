@@ -11,6 +11,8 @@ module.exports = {
         tertiary: "#151030",
         quaternary: "#0d0c18",
         placeholder:"#131027",
+        toggle1: "#00a1bb",
+        toggle2: "#00b35b",
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",

@@ -103,37 +103,24 @@ const Works = () => {
 <div className="flex justify-center items-center my-6 space-x-4">
   {/* Label for AI on the left */}
   <span
-    className={`text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="left"
-    style={{ color: '#90cce2' }}
-  >
+    className={`text-toggle2 text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="left">
     AI
   </span>
 
   <div
-    onClick={toggleSwitch}
-    className={`relative w-24 h-10 flex items-center rounded-full p-1 cursor-pointer fade-in`}
-    flex-direction="bottom"
-    style={{
-      backgroundImage: isOn ? `url('bgs/games6.jpg')` : `url('bgs/aibg6.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}
-  >
+  onClick={toggleSwitch}
+  className={`relative w-24 h-10 flex items-center rounded-full p-1 cursor-pointer fade-in ${isOn ? 'bg-toggle1' : 'bg-toggle2'}`}
+>
     {/* Toggle Circle */}
     <div
-      className={`w-8 h-8 rounded-full shadow-md transform duration-300 ease-in-out ${isOn ? 'translate-x-14' : 'translate-x-0'}`}
-      style={{
-        backgroundColor: '#11101e', 
-      }}
-    ></div>
+      className={`bg-quaternary w-8 h-8 rounded-full shadow-md transform duration-300 ease-in-out ${isOn ? 'translate-x-14' : 'translate-x-0'}`}>
+
+      </div>
   </div>
 
   {/* Label for Games on the right */}
   <span
-    className={`text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="right"
-    style={{ color: '#90cce2' }}
-  >
+    className={`text-toggle1 text-lg font-semibold ${styles.worksLogoText} fade-in`} data-direction="right">
     Games
   </span>
 </div>

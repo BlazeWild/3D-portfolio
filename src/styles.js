@@ -9,7 +9,7 @@ const styles = {
       "text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
 
     worksLogoText:
-      "text-[#90cce2] font-medium lg:text-[30px] sm:text-[24px] xs:text-[22px] text-[16px] lg:leading-[36px]",
+      "text-[#90cce2] font-medium lg:text-[35px] sm:text-[31px] xs:text-[28px] text-[18px] lg:leading-[40px]",
     
     sectionHeadText:
       "text-white font-black md:text-[45px] sm:text-[40px] xs:text-[35px] text-[20px]",
@@ -17,7 +17,7 @@ const styles = {
       "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
 
     // New styles for card zoom effect
-    card: "transition-transform transform hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden",
+    card: " transition-transform transform hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden",
   };
   
   export { styles };

@@ -9,7 +9,7 @@ import { Blaze } from "./canvas/Blaze";
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
 import { socialMediaLinks } from "../constants/SocialMediaLinks";
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'; 
+import { FaGithub, FaLinkedin, FaDiscord,FaTwitter } from 'react-icons/fa'; 
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 const iconComponents = {
   FaGithub: FaGithub,
   FaLinkedin: FaLinkedin,
+  FaDiscord: FaDiscord,
   FaTwitter: FaTwitter,
 };
 

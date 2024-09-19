@@ -54,18 +54,20 @@ const About = () => {
 
   return (
     <section className="relative w-full min-h-screen mx-auto" ref={aboutRef}>
-      <div className="text-center fade-in" data-direction="top">
+      <div className="text-center fade-in" data-direction="top"
+      >
         <p className={styles.sectionHeadText}>About Me</p>
       </div>
 
-      <div className="flex justify-center mt-4 " >
+      <div className="flex justify-center mt-4 ">
         <div className="p-6 rounded-lg shadow-lg w-full max-w-[1000px]">
           <div className="flex flex-col sm:flex-row gap-10 items-start fade-in "data-direction="left">
-            <div className={`flex justify-center items-start mt-5 flex-shrink-0 w-[200px] h-[200px] rounded-[10px] overflow-hidden ${styles.card}`}>
+            <div className='image-shadow flex justify-center items-start mt-5 flex-shrink-0 w-[200px] h-[200px] rounded-[10px] overflow-hidden'>
+            {/* <div className={` flex justify-center items-start mt-5 flex-shrink-0 w-[200px] h-[200px] rounded-[10px] overflow-hidden ${styles.card}`}> */}
               <img
                 src="src/assets/asokbk2.jpg"  
                 alt="Ashok"
-                className="canva-shadow w-full h-full object-cover"
+                className={`w-full h-full object-cover ${styles.card}`}
               />
             </div>
 
