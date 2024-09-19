@@ -9,7 +9,6 @@ import { aiProjects, gamesProjects } from '../hoc/index.js';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 import CanvasLoader from './CanvasLoader.jsx';
-import { TV } from './canvas/Tv.jsx';
 import { SmartTV } from './canvas/SmartTv.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -210,7 +209,7 @@ const Works = () => {
             <Center>
               <Suspense fallback={<CanvasLoader />}>
                 <group scale={6} position={[0, -2, 0]} rotation={[0, 0, 0]}>
-                  <SmartTV/>
+                  <SmartTV texture={currentProject.texture}/>
                 </group>
               </Suspense>
             </Center>

@@ -23,4 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+# videos
 public/textures/project/project1.mp4
+public/textures/project/project2.mp4

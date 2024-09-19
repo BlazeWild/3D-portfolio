@@ -12,21 +12,22 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export function SmartTV(props) {
-  const { nodes, materials } = useGLTF('models/smarttv.glb')
+  const { nodes, materials,animations } = useGLTF('models/stv4.glb')
   const group = useRef();
-//   const { actions } = useAnimations(animations, group);
+  const { actions } = useAnimations(animations, group);
 
   const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4');
 
-  useEffect(() => {
-    if (txt) {
-    txt.rotate = Math.PI/2;
-      txt.flipY = false;
-    }
+  useGSAP(() => {
+    gsap.from(group.current.rotation, {
+      y: Math.PI / 2,
+      duration: 1,
+      ease: 'power3.out',
+    });
   }, [txt]);
 
   return (
-    <group {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null}>
       <group scale={0.225}>
         <mesh
           castShadow
@@ -39,6 +40,7 @@ export function SmartTV(props) {
           receiveShadow
           geometry={nodes.Tv1_1.geometry}
           material={materials.Tv1_Glass_Material}
+          // rotation={[0,0,Math.PI/2]}
         >
              <meshBasicMaterial map={txt} />
             </mesh>
@@ -53,4 +55,4 @@ export function SmartTV(props) {
   )
 }
 
-useGLTF.preload('models/smarttv.glb')
+useGLTF.preload('models/stv4.glb')
