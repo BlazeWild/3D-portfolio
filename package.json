@@ -1,6 +1,7 @@
 {
   "name": "3d-portfolio",
   "private": false,
+  "homepage": "https://blazewild.github.io/3D-portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
