@@ -167,7 +167,7 @@ const Works = () => {
 
   <div className="flex justify-between items-center mt-auto mb-1 relative z-10 ">
     <button className="arrow-btn w-8 h-8" onClick={() => handleNavigation('previous')}>
-      <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+      <img src="assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
     </button>
 
     <a
@@ -177,11 +177,11 @@ const Works = () => {
       rel="noreferrer"
     >
       <p>Check Live Site</p>
-      <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
+      <img src="assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
     </a>
 
     <button className="arrow-btn w-8 h-8" onClick={() => handleNavigation('next')}>
-      <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+      <img src="assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
     </button>
   </div>
 
