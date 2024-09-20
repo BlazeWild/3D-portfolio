@@ -1,6 +1,6 @@
 // src/components/ComputersCanvas.jsx
 
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useRef , useEffect} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useGLTF } from '@react-three/drei';
 import CanvasLoader from '../CanvasLoader';
@@ -26,6 +26,16 @@ const ComputersCanvas = () => {
     waving: '/character/ashokanims/Waving1.fbx',
     idle: '/character/ashokanims/standidle1.fbx',
   };
+
+  useEffect(() => {
+    // Find the canvas element
+    const canvasElement = document.querySelector('canvas');
+    
+    // Modify the wheel event listener to be passive
+    if (canvasElement) {
+      canvasElement.addEventListener('wheel', () => {}, { passive: true });
+    }
+  }, []);
 
   return (
     <Canvas
