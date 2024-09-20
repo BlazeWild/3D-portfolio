@@ -65,7 +65,7 @@ const About = () => {
             <div className='image-shadow flex justify-center items-start mt-5 flex-shrink-0 w-[200px] h-[200px] rounded-[10px] overflow-hidden'>
             {/* <div className={` flex justify-center items-start mt-5 flex-shrink-0 w-[200px] h-[200px] rounded-[10px] overflow-hidden ${styles.card}`}> */}
               <img
-                src="src/assets/asokbk2.jpg"  
+                src="/src/assets/asokbk2.jpg"  
                 alt="Ashok"
                 className={`w-full h-full object-cover ${styles.card}`}
               />
