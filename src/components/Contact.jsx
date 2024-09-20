@@ -48,15 +48,17 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    console.log(form);
+
     emailjs
       .send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "Ashok Bk",
+          to_name: "BlazeWild",
           from_email: form.email,
-          to_email: "ashokbk215@gmail.com",
+          to_email: "blazewild215@gmail.com",
           message: form.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY

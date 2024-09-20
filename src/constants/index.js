@@ -36,7 +36,7 @@ import {
     },
     {
       id: "blog",
-      title: "Blog",
+      title: "Blogs",
     },
     {
       id: "contact",
