@@ -25,7 +25,7 @@ export const aiProjects = [
         {
           id: 2,
           name: 'TailwindCSS',
-          path: 'assets/tailwindcss.png',
+          path: '/assets/tailwindcss.png',
         },
         {
           id: 3,
@@ -62,7 +62,7 @@ export const aiProjects = [
         {
           id: 2,
           name: 'TailwindCSS',
-          path: 'assets/tailwindcss.png',
+          path: '/assets/tailwindcss.png',
         },
         {
           id: 3,
