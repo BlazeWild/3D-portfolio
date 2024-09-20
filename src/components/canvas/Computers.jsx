@@ -23,8 +23,8 @@ const ComputersCanvas = () => {
   const modelRef = useRef();
 
   const animationPaths = {
-    waving: '/character/ashokanims/Waving.fbx',
-    idle: '/character/ashokanims/standidle.fbx',
+    waving: '/public/character/ashokanims/Waving.fbx',
+    idle: '/public/character/ashokanims/standidle.fbx',
   };
 
   return (
@@ -65,7 +65,7 @@ const ComputersCanvas = () => {
         {/* Models */}
         <Platform />
         <FBXModel
-          modelPath="/character/ashok.fbx"
+          modelPath="/public/character/ashok.fbx"
           scale={0.045}
           position={[0, -5, 0]}
           rotation={[0, Math.PI / 3, 0]}
