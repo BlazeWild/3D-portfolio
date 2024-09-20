@@ -1,1 +1,17 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+{
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/" }
+    ],
+    "headers": [
+      {
+        "source": "/(.*).fbx",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "model/vnd.fbx"
+          }
+        ]
+      }
+    ]
+  }
+  

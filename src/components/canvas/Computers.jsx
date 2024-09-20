@@ -23,8 +23,8 @@ const ComputersCanvas = () => {
   const modelRef = useRef();
 
   const animationPaths = {
-    waving: '/public/character/ashokanims/Waving1.fbx',
-    idle: '/public/character/ashokanims/standidle1.fbx',
+    waving: '/character/ashokanims/Waving1.fbx',
+    idle: '/character/ashokanims/standidle1.fbx',
   };
 
   return (
@@ -45,11 +45,11 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <ambientLight intensity={1} />
-        <hemisphereLight intensity={1} groundColor="blue" />
+        {/* <hemisphereLight intensity={1} groundColor="blue" /> */}
         <hemisphereLight intensity={1} groundColor="blue" />
         <directionalLight 
           position={[10, 0, 10]} 
-          intensity={0.1} 
+          intensity={1} 
           castShadow 
         />
 
@@ -65,7 +65,7 @@ const ComputersCanvas = () => {
         {/* Models */}
         <Platform />
         <FBXModel
-          modelPath="/public/character/ashok1.fbx"
+          modelPath="/character/ashok1.fbx"
           scale={0.045}
           position={[0, -5, 0]}
           rotation={[0, Math.PI / 3, 0]}
