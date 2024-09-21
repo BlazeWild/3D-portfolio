@@ -55,4 +55,4 @@ export function SmartTV(props) {
   )
 }
 
-useGLTF.preload('models/stv4.glb')
+useGLTF.preload('/models/stv4.glb')
