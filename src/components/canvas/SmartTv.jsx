@@ -12,7 +12,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export function SmartTV(props) {
-  const { nodes, materials,animations } = useGLTF('models/stv4.glb')
+  const { nodes, materials,animations } = useGLTF('/models/stv4.glb')
   const group = useRef();
   const { actions } = useAnimations(animations, group);
 
