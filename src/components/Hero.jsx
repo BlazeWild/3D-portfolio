@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         
         {/* <ComputersCanvas  shouldAnimate={shouldAnimate}/> */}
-        {/* <ComputersCanvas/> */}
+        <ComputersCanvas/>
          {/*rounded button*/}
 
         <div className='absolute xs:bottom-10 bottom-20 w-full
